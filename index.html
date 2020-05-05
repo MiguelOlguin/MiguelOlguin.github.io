@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8" />
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         <label class="my-1 mr-2 text-white" for="inlineFormCustomSelectPref">Provincia</label>
-                        <select class="selectpicker" data-live-search="true">
+                        <select class="selectpicker" data-live-search="true" id="provincias">
                             <option>San Juan</option>
                             <option>Buenos Aires</option>
                             <option>Catamarca</option>
@@ -174,11 +174,78 @@
                         </div>
                         <label class="my-1 mr-2 text-white" for="inlineFormCustomSelectPref">Categorias</label>
                         <select class="selectpicker categorias" multiple data-selected-text-format="count > 2"
-                            id="multiselect" data-live-search="true">
-                            <option>Mustard</option>
-                            <option>Ketchup</option>
-                            <option>Relish</option>
-                            <option>Onions</option>
+                            id="categorias" data-live-search="true" data-max-options="5">
+                             <option>Abogado</option>
+                             <option>Adiestrador canino</option>
+                             <option>Administración de Empresas</option>
+                             <option>Aire acondicionado</option>
+                             <option>Albañilería</option>
+                             <option>Arquitecto</option>
+                             <option>Bobinador</option>
+                             <option>Carpintería Aluminio</option>
+                             <option>Carpintería Madera </option>
+                             <option>Cerrajería</option>
+                             <option>Chef</option>
+                             <option>Contador</option>
+                             <option>Corredor Inmobiliario</option>
+                             <option>Cuidado de Gente Mayor</option>
+                             <option>Cuidado de niños</option>
+                             <option>Despachante de Aduanas</option>
+                             <option>Diseño Gráfico</option>
+                             <option>Durlock</option>
+                             <option>Electricidad</option>
+                             <option>Electrónica</option>
+                             <option>Enfermeros </option>
+                             <option>Escombros</option>
+                             <option>Escribanos</option>
+                             <option>Fumigador</option>
+                             <option>Gasista</option>
+                             <option>Geólogo</option>
+                             <option>Herrería</option>
+                             <option>Iluminación y Sonido</option>
+                             <option>Industrial</option>
+                             <option>Ingeniería</option>
+                             <option>Interiores</option>
+                             <option>Jardinería</option>
+                             <option>Limpieza  y Planchado</option>
+                             <option>Martilleros públicos</option>
+                             <option>Mecánico</option>
+                             <option>Médicos</option>
+                             <option>Membrana</option>
+                             <option>Modista</option>
+                             <option>Mozo</option>
+                             <option>Músico</option>
+                             <option>Operadores de maquinas</option>
+                             <option>Pastelería y repostería</option>
+                             <option>PC e informática</option>
+                             <option>Peluquero</option>
+                             <option>Personal Trainer</option>
+                             <option>Piletas</option>
+                             <option>Pintura</option>
+                             <option>Plomería</option>
+                             <option>Portero</option>
+                             <option>Profesor De Educación Física</option>
+                             <option>Programadores</option>
+                             <option>Psicólogo</option>
+                             <option>Psicopedagogía</option>
+                             <option>Publicistas</option>
+                             <option>Recursos Humanos</option>
+                             <option>Refrigeración</option>
+                             <option>Reparación De Celulares</option>
+                             <option>Sastre</option>
+                             <option>Sastre</option>
+                             <option>Seguridad e higiene</option>
+                             <option>Seguridad Privada</option>
+                             <option>Servicio gastronómico</option>
+                             <option>Tapicería</option>
+                             <option>Tornero</option>
+                             <option>Tractorista</option>
+                             <option>Traductor</option>
+                             <option>Tripulante De Cabina</option>
+                             <option>Yeso</option>
+                             <option>Zanjeo</option>
+                             <option>Zapatero</option>
+                            
                         </select>
                         <input class="form-control center" type="text"
                             placeholder="Si crees que nos faltaron categorias, escribilas acá separadas por coma">
@@ -207,7 +274,10 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+   
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 </body>
 
 </html>
