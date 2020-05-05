@@ -61,12 +61,21 @@
   });
   $(document).ready(function () {
     $('#categorias').selectpicker({
-      container: 'body'   
+      container: 'body', 
+      maxOptions:5 
   });
   
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
       $('#categorias').selectpicker('mobile');
+     
   }
+  $('#provincias').selectpicker({
+    container: 'body'   
+});
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+    $('#provincias').selectpicker('mobile');
+}
 });
 /*
   function getCategorias() {
