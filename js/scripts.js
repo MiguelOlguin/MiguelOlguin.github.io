@@ -58,11 +58,17 @@
     image: {
       tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
     }
-  });/*
+  });
   $(document).ready(function () {
-
+    $('#categorias').selectpicker({
+      container: 'body'   
+  });
+  
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      $('#categorias').selectpicker('mobile');
   }
-
+});
+/*
   function getCategorias() {
     let dropdown = document.getElementById('categorias');
     dropdown.length = 0;
