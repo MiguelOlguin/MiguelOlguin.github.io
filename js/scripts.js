@@ -61,75 +61,88 @@
   });
   $(document).ready(function () {
     $('#categorias').selectpicker({
-      container: 'body', 
-      maxOptions:5 
-  });
-  
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      container: 'body',
+      maxOptions: 5
+    });
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
       $('#categorias').selectpicker('mobile');
-     
-  }
-  $('#provincias').selectpicker({
-    container: 'body'   
-});
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-    $('#provincias').selectpicker('mobile');
-}
-});
-/*
-  function getCategorias() {
-    let dropdown = document.getElementById('categorias');
-    dropdown.length = 0;
+    }
+    $('#provincias').selectpicker({
+      container: 'body'
+    });
 
-    let defaultOption = document.createElement("option");
-    defaultOption.text = 'Elegí una categoria';
-
-    dropdown.appendChild(defaultOption);
-    dropdown.options[dropdown.options.length] = new Option('Text 1', 'Value1');
-    const url = 'http://192.168.1.43:4004/categorias';
-    const request = new XMLHttpRequest();
-    request.open('GET', url, true);
-
-    request.onload = function () {
-      if (request.status === 200) {
-        const data = JSON.parse(request.responseText);
-        let option;
-
-        for (let i = 0; i < data.length; i++) {
-          option = document.createElement('option');
-          option.text = data[i].nombre;
-          dropdown.options[dropdown.options.length] = new Option(option.text, i);
-        }
-      } else {
-        // Reached the server, but it returned an error
-      }
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      $('#provincias').selectpicker('mobile');
     }
 
-    request.onerror = function () {
-      console.error('An error occurred fetching the JSON from ' + url);
-    };
+    $("#Enviar").click(function () {
+      var preguntaSi = document.getElementById("preguntaSi").checked;
+      var preguntaNo = document.getElementById("preguntaNo").checked;
+      var necesita = document.getElementById("necesita").checked;
+      var ofrece = document.getElementById("ofrece").checked;
+      var postIngresadas = $("#ingresadas").val();
+      var provincias = document.getElementById("provincias");
+      var postProvincias = provincias.options[provincias.selectedIndex].value;
+      var categorias = document.getElementById("categorias");
+      var postCategorias = categorias.selectedOptions;
+      var postcontanosPorque =$("#porque")[0].value;
+      var val = $.trim($("porque").val());
+    if (val != "") {
+        alert(val);
+    }
+      console.log("preguntaSi: " + preguntaSi);
+      console.log("preguntaNo: " + preguntaNo);
+      console.log("necesita: " + necesita);
+      console.log("ofrece: " + ofrece);
+      var categoriasPasar =[];
+      if ((preguntaSi || preguntaNo) && (necesita || ofrece) && postCategorias.length>0) {
 
-    request.send();
-  }
-  /*
-  function getCategorias(listName, siteurl, success, failure) {
-    $.ajax({
-      url: "localhost:4004/categorias",
-      method: "GET",
-      headers: {
-        "Accept": "application/json; odata=verbose"
-      },
-      success: function (data) {
-        console.log(data);
-        success(data);
-      },
-      error: function (data) {
-        failure(data);
-        console.log("Falla");
+        console.log(postProvincias);
+        for (var i = 0; i < postCategorias.length; i++) {
+          categoriasPasar.push(postCategorias[i].value);
+          console.log(postCategorias[i].value);
+        }
+        console.log(postIngresadas);
+        var propuestaPasar=0;
+        if(preguntaSi){
+          propuestaPasar=1;
+        }
+        var oferentePasar =0;
+        if(ofrece){
+          oferentePasar=1;
+        }
+        $.post('http://trato.com.ar:50080/encuestas',  
+        { propuesta: propuestaPasar,
+          oferente: oferentePasar,
+          categorias: categoriasPasar,
+          provincia: postProvincias,
+          contanosPorque : postcontanosPorque,
+          ingresadas: postIngresadas
+        }, 
+        function(data, status, xhr) {
+        
+        
+            
+        }).done(function() {   bootbox.alert("Datos cargados correctamente. Gracias por colaborar con nosotros"); })
+        .fail(function(jqxhr, settings, ex) { 
+          
+          if(ex){
+           bootbox.alert(jqxhr.responseText); 
+          }
+          if(ex){
+
+          }
+      });
+
+
+      } else {
+        $(document).ready(function () {
+          bootbox.alert("Por favor completá los campos requeridos y seleccioná una o más categorias para continuar");
+        });
       }
     });
-  }
-  */
- 
+
+  });
 })(jQuery); // End of use strict
